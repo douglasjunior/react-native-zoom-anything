@@ -7,6 +7,8 @@
 
 A lightweight pinch-to-zoom, pan, and double-tap zoom view for React Native using [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) + [Animated](https://reactnative.dev/docs/animated) (no Reanimated required).
 
+🧑‍💻 Online example on [Snack](https://snack.expo.dev/@douglasjunior/react-native-zoom-anything).
+
 ## Requirements
 
 - React Native >= 0.60
