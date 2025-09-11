@@ -1,6 +1,6 @@
 {
   "name": "react-native-zoom-anything",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A lightweight pinch-to-zoom, pan, and double-tap zoom view for React Native using react-native-gesture-handler + Animated.",
   "main": "src",
   "react-native": "src",
@@ -36,7 +36,7 @@
   },
   "peerDependencies": {
     "react-native": ">=0.69.0",
-    "react-native-gesture-handler": ">=2.5.0"
+    "react-native-gesture-handler": ">=2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
