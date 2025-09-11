@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import React, { useRef, useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import {
   Animated,
   Easing,
@@ -134,6 +134,7 @@ const Zoom = ({ children, minZoom = 1, maxZoom = 5, style }: ZoomProps) => {
   );
 
   const pinchGesture = Gesture.Pinch()
+    .runOnJS(true)
     .onStart(event => {
       if (event.numberOfPointers !== 2) return;
       stopAnimations();
@@ -170,6 +171,7 @@ const Zoom = ({ children, minZoom = 1, maxZoom = 5, style }: ZoomProps) => {
     });
 
   const panGesture = Gesture.Pan()
+    .runOnJS(true)
     .onBegin(() => {
       panStartTranslateX.current = committedTranslateX.current;
       panStartTranslateY.current = committedTranslateY.current;
@@ -242,6 +244,7 @@ const Zoom = ({ children, minZoom = 1, maxZoom = 5, style }: ZoomProps) => {
     });
 
   const doubleTapGesture = Gesture.Tap()
+    .runOnJS(true)
     .numberOfTaps(2)
     .onEnd((event, success) => {
       if (!success) return;

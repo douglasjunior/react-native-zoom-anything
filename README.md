@@ -31,18 +31,23 @@ Follow the `react-native-gesture-handler` installation guide according to your R
 ## Basic usage
 
 ```tsx
-import { Image } from 'react-native';
+import { Image, useWindowDimensions } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
 import Zoom from 'react-native-zoom-anything';
 
 export default function Example() {
+  const { width } = useWindowDimensions();
   return (
-    <Zoom minZoom={1} maxZoom={5}>
-      <Image
-        source={{ uri: 'https://picsum.photos/800/600' }}
-        style={{ width: 800, height: 600 }}
-        resizeMode="contain"
-      />
-    </Zoom>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Zoom minZoom={1} maxZoom={5}>
+        <Image
+          source={{ uri: 'https://picsum.photos/1920/1080' }}
+          style={{ width: width, height: width * 9 / 16 }}
+          resizeMode="contain"
+          />
+      </Zoom>
+    </GestureHandlerRootView>
   );
 }
 ```
