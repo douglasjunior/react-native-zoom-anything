@@ -5,7 +5,7 @@
 [![npm downloads](https://img.shields.io/npm/dt/react-native-zoom-anything.svg)](https://www.npmjs.com/package/react-native-zoom-anything)
 
 
-Pure JS pinch-to-zoom, pan and double-tap zoom container for React Native using `react-native-gesture-handler` + `Animated` (no Reanimated required).
+A lightweight pinch-to-zoom, pan, and double-tap zoom view for React Native using [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) + [Animated](https://reactnative.dev/docs/animated) (no Reanimated required).
 
 ## Requirements
 
