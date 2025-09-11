@@ -1,0 +1,18 @@
+{
+  "extends": "@react-native/typescript-config",
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/Pods"
+  ],
+  "compilerOptions": {
+    "removeComments": false,
+    "outDir": "./dist",
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
+    "sourceMap": true,
+    "declaration": true,
+  }
+}
