@@ -1,2 +1,4 @@
 *.pbxproj -text
 Sample/** linguist-vendored
+scripts/** linguist-vendored
+
