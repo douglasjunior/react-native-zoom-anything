@@ -54,6 +54,8 @@ export default function Example() {
 }
 ```
 
+> PS: Probably on your project you are already using `react-native-gesture-handler`, so you don't need `GestureHandlerRootView`.
+
 ### Props
 
 - `children`: React single element that accepts `onLayout` (e.g., `View`, `Image`).
