@@ -11,8 +11,8 @@ A lightweight pinch-to-zoom, pan, and double-tap zoom view for React Native usin
 
 ## Requirements
 
-- React Native >= 0.60
-- `react-native-gesture-handler` >= 2.5
+- React Native >= 0.69
+- `react-native-gesture-handler` >= 2.0
 
 ## Install
 
