@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 });
 
 export type ZoomProps = {
-  readonly children: React.ReactElement<{ onLayout: ViewProps['onLayout'] }>;
+  readonly children?: React.ReactElement<{ onLayout: ViewProps['onLayout'] }>;
   readonly minZoom?: number;
   readonly maxZoom?: number;
   readonly style?: ViewProps['style'];
@@ -243,6 +243,13 @@ const Zoom = ({ children, minZoom = 1, maxZoom = 5, style }: ZoomProps) => {
       lastParallel.current.start();
     });
 
+  function getTargetScale() {
+    const midScale = (minZoom + maxZoom) / 2;
+    if (Math.abs(committedScale.current - minZoom) < EPS) return midScale;
+    else if (committedScale.current < maxZoom - EPS) return maxZoom;
+    return minZoom;
+  }
+
   const doubleTapGesture = Gesture.Tap()
     .runOnJS(true)
     .numberOfTaps(2)
@@ -250,12 +257,7 @@ const Zoom = ({ children, minZoom = 1, maxZoom = 5, style }: ZoomProps) => {
       if (!success) return;
       stopAnimations();
 
-      const midScale = (minZoom + maxZoom) / 2;
-      let targetScale = minZoom;
-      if (Math.abs(committedScale.current - minZoom) < EPS)
-        targetScale = midScale;
-      else if (committedScale.current < maxZoom - EPS) targetScale = maxZoom;
-      else targetScale = minZoom;
+      let targetScale = getTargetScale();
 
       const containerW = containerWidthPx.current;
       const containerH = containerHeightPx.current;
@@ -322,9 +324,11 @@ const Zoom = ({ children, minZoom = 1, maxZoom = 5, style }: ZoomProps) => {
     <GestureDetector gesture={composedGesture}>
       <View onLayout={onContainerLayout} style={containerStyles}>
         <Animated.View style={contentStyle}>
-          {React.cloneElement(children, {
-            onLayout: onContentLayout,
-          })}
+          {children
+            ? React.cloneElement(children, {
+                onLayout: onContentLayout,
+              })
+            : null}
         </Animated.View>
       </View>
     </GestureDetector>
