@@ -58,10 +58,11 @@ export default function Example() {
 
 ### Props
 
-- `children`: React single element that accepts `onLayout` (e.g., `View`, `Image`).
-- `minZoom` (optional, default `1`)
-- `maxZoom` (optional, default `5`)
-- `style` (optional): Style for the container view.
+- `children`: React single element that accepts `onLayout` (e.g., `<View />`, `<Image />`). Arrays are not supported, use a wrapper `<View>` instead.
+- `minZoom`: Minimum zoom scale (optional, default `1`).
+- `maxZoom`: Maximum zoom scale (optional, default `5`).
+- `style`: Style for the container view (optional).
+- `runOnJS`: If `true`, gestures will be handled in the JavaScript thread. If `false`, gestures will be handled in the native thread using `react-native-reanimated` (make sure to install and configure it). (optional, default `true` to avoid adding a dependency on `react-native-reanimated`)
 
 ## Contribute
 

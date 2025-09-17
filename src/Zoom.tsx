@@ -45,10 +45,34 @@ const styles = StyleSheet.create({
 });
 
 export type ZoomProps = {
+  /**
+   * React single element that accepts `onLayout` (e.g., `<View />`, `<Image />`). 
+   * 
+   * Arrays are not supported, use a wrapper `<View>` instead.
+   */
   readonly children?: React.ReactElement<{ onLayout: ViewProps['onLayout'] }>;
+  /**
+   * Minimum zoom scale (default `1`).
+   */
   readonly minZoom?: number;
+  /**
+   * Maximum zoom scale (default `5`).
+   */
   readonly maxZoom?: number;
+  /**
+   * Style for the container view.
+   */
   readonly style?: ViewProps['style'];
+  /**
+   * If true, gestures will be handled in the JavaScript thread.
+   * 
+   * If false, gestures will be handled in the native thread using `react-native-reanimated` (make sure to install and configure it).
+   * 
+   * Note: The default is `true` to avoid adding a dependency on `react-native-reanimated`.
+   * 
+   * (default `true`)
+   */
+  readonly runOnJS?: boolean;
 };
 
 const clamp = (value: number, min: number, max: number) =>
@@ -57,7 +81,7 @@ const EPS = 1e-3;
 const ANIM_DURATION_MS = 200;
 const INERTIA_PROJECTION_MS = 300;
 
-const Zoom = ({ children, minZoom = 1, maxZoom = 5, style }: ZoomProps) => {
+const Zoom = ({ children, minZoom = 1, maxZoom = 5, style, runOnJS = true }: ZoomProps) => {
   const scale = useRef(new Animated.Value(minZoom)).current;
   const translateX = useRef(new Animated.Value(0)).current;
   const translateY = useRef(new Animated.Value(0)).current;
@@ -134,7 +158,7 @@ const Zoom = ({ children, minZoom = 1, maxZoom = 5, style }: ZoomProps) => {
   );
 
   const pinchGesture = Gesture.Pinch()
-    .runOnJS(true)
+    .runOnJS(runOnJS)
     .onStart(event => {
       if (event.numberOfPointers !== 2) return;
       stopAnimations();
@@ -171,7 +195,7 @@ const Zoom = ({ children, minZoom = 1, maxZoom = 5, style }: ZoomProps) => {
     });
 
   const panGesture = Gesture.Pan()
-    .runOnJS(true)
+    .runOnJS(runOnJS)
     .onBegin(() => {
       panStartTranslateX.current = committedTranslateX.current;
       panStartTranslateY.current = committedTranslateY.current;
@@ -251,7 +275,7 @@ const Zoom = ({ children, minZoom = 1, maxZoom = 5, style }: ZoomProps) => {
   }
 
   const doubleTapGesture = Gesture.Tap()
-    .runOnJS(true)
+    .runOnJS(runOnJS)
     .numberOfTaps(2)
     .onEnd((event, success) => {
       if (!success) return;
