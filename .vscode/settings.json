@@ -1,13 +1,19 @@
 {
+  "editor.tabSize": 2,
+  "editor.useTabStops": true,
+  "editor.insertSpaces": true,
   "github.copilot.chat.commitMessageGeneration.instructions": [
     {
       "file": ".github/copilot-instructions.md"
     }
   ],
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "source.organizeImports": "explicit",
-    "source.sortMembers": "explicit"
+    "source.fixAll.ts": "explicit"
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "prettier.enable": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": false,
+  "editor.rulers": [
+    120
+  ],
 }

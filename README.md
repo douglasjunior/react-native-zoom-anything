@@ -9,6 +9,10 @@ A lightweight pinch-to-zoom, pan, and double-tap zoom view for React Native usin
 
 🧑‍💻 Online example on [Snack](https://snack.expo.dev/@douglasjunior/react-native-zoom-anything).
 
+|Android|iOS|
+|-|-|
+|<img src="https://github.com/douglasjunior/react-native-zoom-anything/raw/main/screenshots/android.gif" width="240"/>|<img src="https://github.com/douglasjunior/react-native-zoom-anything/raw/main/screenshots/ios.gif" width="240"/>
+
 ## Requirements
 
 - React Native >= 0.69
