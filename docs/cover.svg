@@ -1,280 +1,422 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 440" width="100%" height="440" preserveAspectRatio="xMidYMid meet">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
   <defs>
     <!-- Background Gradients -->
-    <linearGradient id="cosmic-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#04050d" />
-      <stop offset="50%" stop-color="#070918" />
-      <stop offset="100%" stop-color="#0a0c1d" />
+    <radialGradient id="nebula-violet" cx="18%" cy="18%" r="65%">
+      <stop offset="0%" stop-color="#5842d6" stop-opacity="0.40"/>
+      <stop offset="100%" stop-color="#04050d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebula-cyan" cx="82%" cy="28%" r="60%">
+      <stop offset="0%" stop-color="#1882be" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#04050d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebula-pink" cx="45%" cy="92%" r="55%">
+      <stop offset="0%" stop-color="#be3c78" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#04050d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cosmic-stripe" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b7bff"/>
+      <stop offset="35%" stop-color="#3fd0ff"/>
+      <stop offset="70%" stop-color="#f472b6"/>
+      <stop offset="100%" stop-color="#ffd56a"/>
+    </linearGradient>
+    <linearGradient id="title-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="35%" stop-color="#e9ebfa"/>
+      <stop offset="70%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+    </linearGradient>
+    <linearGradient id="phone-border" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.65"/>
+      <stop offset="50%" stop-color="#3fd0ff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f472b6" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="photo-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5b6cff"/>
+      <stop offset="100%" stop-color="#f9a8d4"/>
     </linearGradient>
 
-    <!-- Radial Nebula Glows -->
-    <radialGradient id="glow-violet" cx="20%" cy="25%" r="45%">
-      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.22" />
-      <stop offset="100%" stop-color="#8b7bff" stop-opacity="0" />
-    </radialGradient>
-    <radialGradient id="glow-cyan" cx="80%" cy="30%" r="50%">
-      <stop offset="0%" stop-color="#3fd0ff" stop-opacity="0.18" />
-      <stop offset="100%" stop-color="#3fd0ff" stop-opacity="0" />
-    </radialGradient>
-    <radialGradient id="glow-pink" cx="45%" cy="80%" r="45%">
-      <stop offset="0%" stop-color="#ff6a8e" stop-opacity="0.14" />
-      <stop offset="100%" stop-color="#ff6a8e" stop-opacity="0" />
-    </radialGradient>
+    <!-- Filters -->
+    <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="glow-violet" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="glow-pink" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
 
-    <!-- Core Focal Gradient -->
-    <linearGradient id="core-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#8b7bff" />
-      <stop offset="50%" stop-color="#3fd0ff" />
-      <stop offset="100%" stop-color="#ff6a8e" />
-    </linearGradient>
-
-    <!-- Card Background Gradient -->
-    <linearGradient id="card-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0e122b" stop-opacity="0.8" />
-      <stop offset="100%" stop-color="#070918" stop-opacity="0.9" />
-    </linearGradient>
+    <!-- Clipping Paths -->
+    <clipPath id="screen-clip">
+      <rect x="756" y="64" width="428" height="492" rx="28"/>
+    </clipPath>
+    <clipPath id="zoom-container-clip">
+      <rect x="776" y="126" width="388" height="340" rx="18"/>
+    </clipPath>
+    <clipPath id="photo-clip">
+      <rect x="-170" y="-120" width="340" height="240" rx="12"/>
+    </clipPath>
 
     <style>
-      .sys-text {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      }
-
-      /* Twinkle opacity only */
-      @keyframes twinkle-a {
-        0%, 100% { opacity: 0.25; }
-        50% { opacity: 0.95; }
-      }
-      @keyframes twinkle-b {
-        0%, 100% { opacity: 0.85; }
-        50% { opacity: 0.2; }
-      }
-      @keyframes twinkle-c {
-        0%, 100% { opacity: 0.35; }
-        50% { opacity: 1; }
-      }
-
-      .star-a { animation: twinkle-a 3.2s ease-in-out infinite; }
-      .star-b { animation: twinkle-b 4.1s ease-in-out infinite; }
-      .star-c { animation: twinkle-c 2.8s ease-in-out infinite; }
-
-      /* Orbit animation around center (0,0) of static wrapper */
-      @keyframes orbit-rot {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-
-      .orbit-group {
-        animation: orbit-rot 14s linear infinite;
-      }
-
-      /* Pulse touch animation inside localized bounds with static wrapper */
-      @keyframes touch-pulse-anim {
-        0%, 100% { transform: scale(0.85); opacity: 0.35; }
-        50% { transform: scale(1.25); opacity: 0.85; }
-      }
-
-      .touch-pulse-1 {
+      <![CDATA[
+      /* Static and Reduced Motion Defaults */
+      .anim-zoom-photo {
+        transform: scale(1) translate(0, 0);
         transform-box: fill-box;
         transform-origin: center;
-        animation: touch-pulse-anim 2.6s ease-in-out infinite;
       }
-      .touch-pulse-2 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: touch-pulse-anim 2.6s ease-in-out infinite 1.3s;
+      .anim-tap-ripple-1, .anim-tap-ripple-2,
+      .anim-finger-1, .anim-finger-2, .anim-pinch-line,
+      .anim-zoom-label-2 {
+        opacity: 0;
+        display: none;
       }
-
-      /* Reticle bracket pulse */
-      @keyframes reticle-pulse {
-        0%, 100% { opacity: 0.5; }
-        50% { opacity: 0.95; }
-      }
-      .reticle-group {
-        animation: reticle-pulse 3s ease-in-out infinite;
+      .anim-zoom-label-1 {
+        opacity: 1;
       }
 
-      /* Reduced motion accessibility */
-      @media (prefers-reduced-motion: reduce) {
-        .star-a, .star-b, .star-c,
-        .orbit-group,
-        .touch-pulse-1, .touch-pulse-2,
-        .reticle-group {
-          animation: none !important;
+      @media (prefers-reduced-motion: no-preference) {
+        .anim-star-twinkle {
+          animation: starTwinkle 4s ease-in-out infinite;
+        }
+        .anim-tap-ripple-1, .anim-tap-ripple-2,
+        .anim-finger-1, .anim-finger-2, .anim-pinch-line,
+        .anim-zoom-label-2 {
+          display: inline;
+        }
+        .anim-zoom-photo {
+          animation: photoCycle 8s ease-in-out infinite;
+        }
+        .anim-tap-ripple-1 {
+          animation: tapRipple 8s ease-out infinite;
+          transform-box: fill-box;
+          transform-origin: center;
+        }
+        .anim-tap-ripple-2 {
+          animation: tapRipple 8s ease-out infinite 0.24s;
+          transform-box: fill-box;
+          transform-origin: center;
+        }
+        .anim-finger-1 {
+          animation: fingerPinch1 8s ease-in-out infinite;
+        }
+        .anim-finger-2 {
+          animation: fingerPinch2 8s ease-in-out infinite;
+        }
+        .anim-pinch-line {
+          animation: pinchLine 8s ease-in-out infinite;
+        }
+        .anim-zoom-label-1 {
+          animation: labelMinZoom 8s ease-in-out infinite;
+        }
+        .anim-zoom-label-2 {
+          animation: labelMaxZoom 8s ease-in-out infinite;
         }
       }
+
+      /* Twinkle: Opacity Only */
+      @keyframes starTwinkle {
+        0%, 100% { opacity: 0.25; }
+        50%      { opacity: 0.85; }
+      }
+
+      /* Phase 1: Double-Tap Ripple (0s - 1.6s -> 0% - 20%) */
+      @keyframes tapRipple {
+        0%, 2% { opacity: 0; transform: scale(0.3); }
+        5% { opacity: 0.9; }
+        15% { opacity: 0; transform: scale(2.4); }
+        16%, 100% { opacity: 0; transform: scale(0.3); }
+      }
+
+      /* Phase 2: Pinch Gesture & Zoom (2s - 5.6s -> 25% - 70%) */
+      @keyframes photoCycle {
+        0%, 24% { transform: scale(1) translate(0, 0); }
+        38%, 62% { transform: scale(1.85) translate(-14px, 10px); }
+        76%, 100% { transform: scale(1) translate(0, 0); }
+      }
+
+      @keyframes fingerPinch1 {
+        0%, 22% { opacity: 0; transform: translate(0, 0); }
+        25% { opacity: 1; transform: translate(0, 0); }
+        38%, 46% { opacity: 1; transform: translate(-42px, 42px); }
+        52%, 100% { opacity: 0; transform: translate(-42px, 42px); }
+      }
+
+      @keyframes fingerPinch2 {
+        0%, 22% { opacity: 0; transform: translate(0, 0); }
+        25% { opacity: 1; transform: translate(0, 0); }
+        38%, 46% { opacity: 1; transform: translate(42px, -42px); }
+        52%, 100% { opacity: 0; transform: translate(42px, -42px); }
+      }
+
+      @keyframes pinchLine {
+        0%, 23% { opacity: 0; }
+        26% { opacity: 0.7; }
+        38%, 45% { opacity: 0.7; }
+        50%, 100% { opacity: 0; }
+      }
+
+      @keyframes labelMinZoom {
+        0%, 26% { opacity: 1; }
+        32%, 68% { opacity: 0; }
+        76%, 100% { opacity: 1; }
+      }
+
+      @keyframes labelMaxZoom {
+        0%, 26% { opacity: 0; }
+        32%, 68% { opacity: 1; }
+        76%, 100% { opacity: 0; }
+      }
+      ]]>
     </style>
   </defs>
 
-  <!-- Canvas Background -->
-  <rect width="840" height="440" rx="16" fill="url(#cosmic-bg)" />
-  <rect width="840" height="440" rx="16" fill="url(#glow-violet)" />
-  <rect width="840" height="440" rx="16" fill="url(#glow-cyan)" />
-  <rect width="840" height="440" rx="16" fill="url(#glow-pink)" />
-  <rect x="0.5" y="0.5" width="839" height="439" rx="16" fill="none" stroke="rgba(139, 123, 255, 0.25)" stroke-width="1" />
+  <!-- Background Canvas -->
+  <rect width="1280" height="640" rx="20" fill="#04050d"/>
+  <rect width="1280" height="640" rx="20" fill="url(#nebula-violet)"/>
+  <rect width="1280" height="640" rx="20" fill="url(#nebula-cyan)"/>
+  <rect width="1280" height="640" rx="20" fill="url(#nebula-pink)"/>
 
-  <!-- Cosmic Starfield (twinkle opacity only) -->
-  <g id="stars">
-    <circle cx="65" cy="85" r="1.2" fill="#e9ebfa" class="star-a" />
-    <circle cx="120" cy="180" r="1" fill="#e9ebfa" class="star-b" />
-    <circle cx="210" cy="45" r="1.4" fill="#ffd56a" class="star-c" />
-    <circle cx="280" cy="115" r="1.1" fill="#e9ebfa" class="star-a" />
-    <circle cx="360" cy="65" r="1.3" fill="#3fd0ff" class="star-b" />
-    <circle cx="430" cy="190" r="1.5" fill="#e9ebfa" class="star-c" />
-    <circle cx="475" cy="35" r="1" fill="#e9ebfa" class="star-a" />
-    <circle cx="510" cy="245" r="1.3" fill="#ff6a8e" class="star-b" />
-    <circle cx="600" cy="18" r="1.2" fill="#e9ebfa" class="star-a" />
-    <circle cx="730" cy="25" r="1.4" fill="#ffd56a" class="star-c" />
-    <circle cx="805" cy="80" r="1.1" fill="#e9ebfa" class="star-b" />
-    <circle cx="815" cy="215" r="1.3" fill="#3fd0ff" class="star-a" />
-    <circle cx="770" cy="250" r="1" fill="#e9ebfa" class="star-c" />
-    <circle cx="50" cy="240" r="1.2" fill="#e9ebfa" class="star-b" />
-    <circle cx="160" cy="255" r="1.4" fill="#8b7bff" class="star-a" />
+  <!-- Subtle Cosmic Grid -->
+  <g opacity="0.10">
+    <line x1="80" y1="0" x2="80" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="360" y1="0" x2="360" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="520" y1="0" x2="520" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="680" y1="0" x2="680" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="840" y1="0" x2="840" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="1000" y1="0" x2="1000" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="1160" y1="0" x2="1160" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="0" y1="80" x2="1280" y2="80" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="0" y1="200" x2="1280" y2="200" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="0" y1="320" x2="1280" y2="320" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="0" y1="440" x2="1280" y2="440" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="0" y1="560" x2="1280" y2="560" stroke="#8b7bff" stroke-width="1"/>
   </g>
 
-  <!-- Left Header Section -->
-  <g id="header-text" class="sys-text">
-    <!-- Category Pill (width: 256px, accounts for letter-spacing) -->
-    <rect x="36" y="36" width="256" height="26" rx="13" fill="rgba(139, 123, 255, 0.12)" stroke="rgba(139, 123, 255, 0.35)" stroke-width="1" />
-    <circle cx="50" cy="49" r="4" fill="#8b7bff" />
-    <text x="62" y="53" font-size="11" font-weight="600" fill="#8b7bff" letter-spacing="1">REACT NATIVE GESTURE ZOOM</text>
+  <!-- Stars (Twinkle Opacity Only) -->
+  <g class="anim-star-twinkle" fill="#ffd56a">
+    <circle cx="140" cy="90" r="1.5" opacity="0.6"/>
+    <circle cx="280" cy="460" r="1.2" opacity="0.4"/>
+    <circle cx="620" cy="110" r="1.8" opacity="0.7"/>
+    <circle cx="690" cy="520" r="1.4" opacity="0.5"/>
+    <circle cx="1220" cy="100" r="1.7" opacity="0.7"/>
+  </g>
+  <g fill="#3fd0ff">
+    <circle cx="110" cy="340" r="1.4" opacity="0.6"/>
+    <circle cx="560" cy="390" r="1.6" opacity="0.6"/>
+    <circle cx="720" cy="80" r="1.2" opacity="0.4"/>
+    <circle cx="1210" cy="420" r="1.5" opacity="0.6"/>
+  </g>
+
+  <!-- Outer Border Frame -->
+  <rect x="1" y="1" width="1278" height="638" rx="19" fill="none" stroke="rgba(150, 160, 255, 0.16)" stroke-width="2"/>
+  <!-- Cosmic Gradient Stripe at Bottom -->
+  <rect x="0" y="635" width="1280" height="5" fill="url(#cosmic-stripe)"/>
+
+  <!-- ==================== LEFT COLUMN: CONTENT & FEATURES ==================== -->
+  <g transform="translate(80, 0)">
+    <!-- Category Pill with >= 10px text padding for wide fallbacks -->
+    <g transform="translate(0, 82)">
+      <rect width="300" height="32" rx="16" fill="rgba(167, 139, 250, 0.12)" stroke="#a78bfa" stroke-width="1.2"/>
+      <circle cx="18" cy="16" r="4" fill="#a78bfa"/>
+      <text x="32" y="21" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#e9ebfa" letter-spacing="1">REACT NATIVE · GESTURE ZOOM</text>
+    </g>
 
     <!-- Main Title -->
-    <text x="36" y="100" font-size="28" font-weight="800" fill="#e9ebfa" letter-spacing="-0.5" textLength="420" lengthAdjust="spacingAndGlyphs">
-      react-native-zoom-anything
+    <text x="0" y="176" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="#ffffff" letter-spacing="-0.5">
+      react-native-
+    </text>
+    <text x="0" y="230" font-family="system-ui, -apple-system, sans-serif" font-size="46" font-weight="800" fill="url(#title-grad)" letter-spacing="-0.5">
+      zoom-anything
     </text>
 
-    <!-- Tagline -->
-    <text x="36" y="130" font-size="13" font-weight="400" fill="#9ba1c7" textLength="420" lengthAdjust="spacingAndGlyphs">
-      Smooth pinch-to-zoom, pan inertia, and double-tap zoom.
+    <!-- Subtitle / One-liner with >= 10px clearance -->
+    <text x="0" y="276" font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#9ba1c7" font-weight="400">
+      Smooth pinch-to-zoom, pan inertia, and double-tap zoom for any view.
+    </text>
+    <text x="0" y="302" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#838ab2" font-weight="400">
+      Built on <tspan fill="#3fd0ff" font-weight="600">react-native-gesture-handler</tspan> &amp; <tspan fill="#f472b6" font-weight="600">Animated</tspan> — zero Reanimated required.
     </text>
 
-    <!-- Feature Badges Bar (all with >= 10px text padding) -->
-    <!-- Badge 1: Zero Reanimated (width 140px, text ~107px => 16.5px padding) -->
-    <rect x="36" y="152" width="140" height="26" rx="13" fill="rgba(63, 208, 255, 0.1)" stroke="rgba(63, 208, 255, 0.3)" stroke-width="1" />
-    <text x="106" y="169" font-size="11" font-weight="700" fill="#3fd0ff" text-anchor="middle">Zero Reanimated</text>
+    <!-- Feature Bullet Cards (descriptions formatted in exactly two lines) -->
+    <g transform="translate(0, 342)">
+      <!-- Card 1: Simultaneous Gestures & Double-Tap -->
+      <g transform="translate(0, 0)">
+        <rect width="560" height="52" rx="12" fill="rgba(13, 15, 36, 0.65)" stroke="rgba(150, 160, 255, 0.14)" stroke-width="1"/>
+        <circle cx="26" cy="26" r="12" fill="rgba(244, 114, 182, 0.15)"/>
+        <text x="26" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="14" text-anchor="middle">👆</text>
+        <text x="52" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#e9ebfa">Simultaneous Gestures &amp; Double-Tap</text>
+        <text x="52" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" fill="#9ba1c7">
+          <tspan x="52" dy="0">Pinch, pan, and double-tap recognizers run simultaneously.</tspan>
+          <tspan x="52" dy="13">Double-tap smoothly cycles minZoom → midpoint → maxZoom.</tspan>
+        </text>
+      </g>
 
-    <!-- Badge 2: RNGH + Animated (width 140px, text ~107px => 16.5px padding) -->
-    <rect x="184" y="152" width="140" height="26" rx="13" fill="rgba(255, 106, 142, 0.1)" stroke="rgba(255, 106, 142, 0.3)" stroke-width="1" />
-    <text x="254" y="169" font-size="11" font-weight="700" fill="#ff6a8e" text-anchor="middle">RNGH + Animated</text>
+      <!-- Card 2: Clamped Pan with Momentum -->
+      <g transform="translate(0, 64)">
+        <rect width="560" height="52" rx="12" fill="rgba(13, 15, 36, 0.65)" stroke="rgba(150, 160, 255, 0.14)" stroke-width="1"/>
+        <circle cx="26" cy="26" r="12" fill="rgba(63, 208, 255, 0.15)"/>
+        <text x="26" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="14" text-anchor="middle">✋</text>
+        <text x="52" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#e9ebfa">Clamped Pan with Momentum</text>
+        <text x="52" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" fill="#9ba1c7">
+          <tspan x="52" dy="0">Strict boundary calculation keeps scaled content within viewport.</tspan>
+          <tspan x="52" dy="13">Cubic inertia projection decays smoothly on gesture release.</tspan>
+        </text>
+      </g>
 
-    <!-- Badge 3: TypeScript 5 (width 116px, text ~86px => 15px padding) -->
-    <rect x="332" y="152" width="116" height="26" rx="13" fill="rgba(255, 213, 106, 0.1)" stroke="rgba(255, 213, 106, 0.3)" stroke-width="1" />
-    <text x="390" y="169" font-size="11" font-weight="700" fill="#ffd56a" text-anchor="middle">TypeScript 5</text>
+      <!-- Card 3: Zero Reanimated & Native Driver -->
+      <g transform="translate(0, 128)">
+        <rect width="560" height="52" rx="12" fill="rgba(13, 15, 36, 0.65)" stroke="rgba(150, 160, 255, 0.14)" stroke-width="1"/>
+        <circle cx="26" cy="26" r="12" fill="rgba(167, 139, 250, 0.15)"/>
+        <text x="26" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="14" text-anchor="middle">🪶</text>
+        <text x="52" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#e9ebfa">Zero Reanimated &amp; Native Driver</text>
+        <text x="52" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" fill="#9ba1c7">
+          <tspan x="52" dy="0">Pure Animated.timing transitions running on the native UI thread.</tspan>
+          <tspan x="52" dy="13">Defaults to JS thread for zero setup, with optional UI thread execution.</tspan>
+        </text>
+      </g>
+    </g>
+
+    <!-- Bottom Metadata Chips -->
+    <g transform="translate(0, 544)">
+      <rect width="100" height="26" rx="6" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.12)"/>
+      <text x="50" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#9ba1c7" text-anchor="middle">MIT License</text>
+
+      <rect x="110" width="170" height="26" rx="6" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.12)"/>
+      <text x="195" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#9ba1c7" text-anchor="middle">React Native &gt;= 0.69</text>
+
+      <rect x="290" width="114" height="26" rx="6" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.12)"/>
+      <text x="347" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#9ba1c7" text-anchor="middle">RNGH &gt;= 2.0</text>
+
+      <rect x="414" width="150" height="26" rx="6" fill="rgba(167, 139, 250, 0.1)" stroke="rgba(167, 139, 250, 0.3)"/>
+      <text x="489" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#a78bfa" text-anchor="middle">TypeScript Strict</text>
+    </g>
   </g>
 
-  <!-- Right Side: Zoom Interactive Cosmic Viewport -->
-  <g id="viewport-container" class="sys-text">
-    <!-- Outer Viewport Frame -->
-    <rect x="472" y="32" width="332" height="206" rx="14" fill="rgba(7, 9, 24, 0.75)" stroke="rgba(139, 123, 255, 0.3)" stroke-width="1.5" />
+  <!-- ==================== RIGHT COLUMN: MOBILE ZOOM COMPONENT MOCKUP ==================== -->
+  <g transform="translate(740, 48)">
+    <!-- Soft Background Ambient Glows behind Phone -->
+    <rect x="10" y="10" width="440" height="504" rx="42" fill="none" stroke="rgba(244, 114, 182, 0.25)" stroke-width="16" opacity="0.3" filter="url(#glow-pink)"/>
+    <rect x="10" y="10" width="440" height="504" rx="42" fill="none" stroke="rgba(139, 123, 255, 0.35)" stroke-width="20" opacity="0.3" filter="url(#glow-violet)"/>
 
-    <!-- Grid lines inside viewport -->
-    <path d="M 472 84 L 804 84 M 472 136 L 804 136 M 472 188 L 804 188 M 555 32 L 555 238 M 638 32 L 638 238 M 721 32 L 721 238" stroke="rgba(155, 161, 199, 0.06)" stroke-width="1" />
+    <!-- Phone Chassis Frame -->
+    <rect x="10" y="10" width="440" height="504" rx="40" fill="#0d0f27" stroke="url(#phone-border)" stroke-width="2.5"/>
 
-    <!-- Viewport Header Bar -->
-    <rect x="472" y="32" width="332" height="28" rx="14" fill="rgba(14, 18, 43, 0.85)" />
-    <!-- Window controls -->
-    <circle cx="490" cy="46" r="4" fill="#ff6a8e" />
-    <circle cx="504" cy="46" r="4" fill="#ffd56a" />
-    <circle cx="518" cy="46" r="4" fill="#3fd0ff" />
-    <!-- Viewport title -->
-    <text x="532" y="50" font-size="11" font-weight="600" fill="#9ba1c7">Container Viewport</text>
-    <!-- Zoom Scale Badge (width 54, text 2.5x => >14px padding) -->
-    <rect x="738" y="38" width="54" height="16" rx="8" fill="rgba(63, 208, 255, 0.15)" stroke="rgba(63, 208, 255, 0.4)" stroke-width="0.8" />
-    <text x="765" y="50" font-size="10" font-weight="700" fill="#3fd0ff" text-anchor="middle">2.5x</text>
+    <!-- Screen Inner Area (Clipped) -->
+    <g transform="translate(-740, -48)" clip-path="url(#screen-clip)">
+      <!-- App Screen Background -->
+      <rect x="756" y="64" width="428" height="492" fill="#080a1c"/>
 
-    <!-- Center Cosmic Focal Core at (638, 138) -->
-    <circle cx="638" cy="138" r="26" fill="url(#core-grad)" opacity="0.85" />
-    <circle cx="638" cy="138" r="20" fill="#070918" />
-    <circle cx="638" cy="138" r="8" fill="url(#core-grad)" />
+      <!-- App Header Bar -->
+      <rect x="756" y="64" width="428" height="54" fill="rgba(20, 24, 52, 0.7)"/>
+      <circle cx="782" cy="91" r="8" fill="rgba(255, 255, 255, 0.1)"/>
+      <path d="M780 91 L784 87 M780 91 L784 95" stroke="#e9ebfa" stroke-width="1.8" stroke-linecap="round"/>
+      <text x="800" y="96" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" font-weight="700" fill="#e9ebfa">Component Demo</text>
 
-    <!-- Orbital Ring around Center Core -->
-    <circle cx="638" cy="138" r="50" fill="none" stroke="rgba(139, 123, 255, 0.25)" stroke-dasharray="4, 6" stroke-width="1.2" />
+      <!-- Min/Max Indicator Chip -->
+      <rect x="980" y="79" width="112" height="24" rx="12" fill="rgba(255, 255, 255, 0.06)" stroke="rgba(255, 255, 255, 0.14)"/>
+      <text x="1036" y="95" font-family="ui-monospace, monospace" font-size="11" fill="#9ba1c7" text-anchor="middle">1.0x – 5.0x</text>
 
-    <!-- Static Transform Wrapper around Orbit Particle (Correct Orbit Origin at 638, 138) -->
-    <g transform="translate(638, 138)">
-      <g class="orbit-group">
-        <circle cx="50" cy="0" r="4.5" fill="#ffd56a" />
-        <circle cx="50" cy="0" r="2" fill="#ffffff" />
+      <!-- Active Zoom Scale Chip (animated label toggle) -->
+      <rect x="1100" y="79" width="68" height="24" rx="12" fill="rgba(63, 208, 255, 0.12)" stroke="#3fd0ff" stroke-width="1.2"/>
+      <text class="anim-zoom-label-1" x="1134" y="95" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#3fd0ff" text-anchor="middle">1.0x</text>
+      <text class="anim-zoom-label-2" x="1134" y="95" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#f472b6" text-anchor="middle">2.5x</text>
+
+      <!-- ==================== ZOOM COMPONENT CONTAINER ==================== -->
+      <!-- Container Viewport Frame (Clipped at rounded rect boundaries) -->
+      <g clip-path="url(#zoom-container-clip)">
+        <!-- Viewport Base Canvas -->
+        <rect x="776" y="126" width="388" height="340" fill="#090b1e"/>
+
+        <!-- Subtle alignment grid inside container -->
+        <g stroke="rgba(150, 160, 255, 0.08)" stroke-width="1">
+          <line x1="776" y1="211" x2="1164" y2="211"/>
+          <line x1="776" y1="296" x2="1164" y2="296"/>
+          <line x1="776" y1="381" x2="1164" y2="381"/>
+          <line x1="873" y1="126" x2="873" y2="466"/>
+          <line x1="970" y1="126" x2="970" y2="466"/>
+          <line x1="1067" y1="126" x2="1067" y2="466"/>
+        </g>
+
+        <!-- Static Transform Wrapper around Photo (Centered at Focal Point 970, 296) -->
+        <g transform="translate(970, 296)">
+          <!-- Animated Zoom Photo Group -->
+          <g class="anim-zoom-photo">
+            <!-- Landscape Photo Element (from portfolio ZoomArt reference) -->
+            <g clip-path="url(#photo-clip)">
+              <!-- Photo Sky Gradient -->
+              <rect x="-170" y="-120" width="340" height="240" fill="url(#photo-sky)"/>
+
+              <!-- Golden Sun with Soft Corona -->
+              <circle cx="70" cy="-45" r="38" fill="#ffd56a" opacity="0.3"/>
+              <circle cx="70" cy="-45" r="26" fill="#ffe08a"/>
+
+              <!-- Distant Mountain Range -->
+              <path d="M-170 120 L-170 30 L-90 -35 L-20 20 L40 -40 L110 30 L170 -15 L170 120 Z" fill="#2b2f6b"/>
+
+              <!-- Midground Mountain Range -->
+              <path d="M-170 120 L-170 65 L-70 10 L0 55 L70 20 L170 75 L170 120 Z" fill="#1c1f4f"/>
+
+              <!-- Foreground Foothills & Valley -->
+              <path d="M-170 120 L-170 95 L-100 70 L-30 95 L60 65 L170 100 L170 120 Z" fill="#0f1130"/>
+            </g>
+
+            <!-- Thin inner photo border -->
+            <rect x="-170" y="-120" width="340" height="240" rx="12" fill="none" stroke="rgba(255, 255, 255, 0.16)" stroke-width="1"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- Zoom Viewport Container Border -->
+      <rect x="776" y="126" width="388" height="340" rx="18" fill="none" stroke="rgba(167, 139, 250, 0.45)" stroke-width="1.8"/>
+
+      <!-- Viewport Corner Boundary Reticles -->
+      <g stroke="#3fd0ff" stroke-width="1.8" fill="none" opacity="0.65">
+        <path d="M 788 144 L 788 136 L 796 136"/>
+        <path d="M 1152 144 L 1152 136 L 1144 136"/>
+        <path d="M 788 448 L 788 456 L 796 456"/>
+        <path d="M 1152 448 L 1152 456 L 1144 456"/>
+      </g>
+
+      <!-- ==================== GESTURE OVERLAY LAYER ==================== -->
+      <!-- Static Transform Wrapper around Gestures at (970, 296) -->
+      <g transform="translate(970, 296)">
+        <!-- Phase 1: Double-Tap Ripple Rings -->
+        <circle class="anim-tap-ripple-1" cx="0" cy="0" r="28" fill="none" stroke="#f472b6" stroke-width="2.5"/>
+        <circle class="anim-tap-ripple-2" cx="0" cy="0" r="28" fill="none" stroke="#3fd0ff" stroke-width="2.5"/>
+
+        <!-- Phase 2: Pinch Pointers with Connecting Line -->
+        <line class="anim-pinch-line" x1="-30" y1="30" x2="30" y2="-30" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1.5" stroke-dasharray="3 4"/>
+
+        <!-- Pinch Finger 1 (Bottom-Left) -->
+        <g class="anim-finger-1">
+          <circle cx="-30" cy="30" r="18" fill="rgba(244, 114, 182, 0.35)" stroke="#f472b6" stroke-width="2"/>
+          <circle cx="-30" cy="30" r="4.5" fill="#ffffff"/>
+        </g>
+
+        <!-- Pinch Finger 2 (Top-Right) -->
+        <g class="anim-finger-2">
+          <circle cx="30" cy="-30" r="18" fill="rgba(63, 208, 255, 0.35)" stroke="#3fd0ff" stroke-width="2"/>
+          <circle cx="30" cy="-30" r="4.5" fill="#ffffff"/>
+        </g>
+      </g>
+
+      <!-- Bottom Container Status Info Card -->
+      <g transform="translate(776, 478)">
+        <rect width="388" height="58" rx="14" fill="#0d1028" stroke="rgba(150, 160, 255, 0.12)" stroke-width="1"/>
+        <circle cx="28" cy="29" r="14" fill="rgba(63, 208, 255, 0.15)"/>
+        <text x="28" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="14" text-anchor="middle">📐</text>
+        <text x="52" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#3fd0ff">Container Viewport · Clamped Pan</text>
+        <text x="52" y="42" font-family="ui-monospace, monospace" font-size="10.5" fill="#9ba1c7">Inertia: Easing.out(cubic) · Native Driver: ON</text>
       </g>
     </g>
 
-    <!-- Autofocus Reticle Brackets around (638, 138) -->
-    <g class="reticle-group" stroke="#3fd0ff" stroke-width="1.5" fill="none">
-      <!-- Top-Left -->
-      <path d="M 598 110 L 598 98 L 610 98" />
-      <!-- Top-Right -->
-      <path d="M 666 98 L 678 98 L 678 110" />
-      <!-- Bottom-Left -->
-      <path d="M 598 166 L 598 178 L 610 178" />
-      <!-- Bottom-Right -->
-      <path d="M 666 178 L 678 178 L 678 166" />
-    </g>
-
-    <!-- Pinch Pointer 1 at (572, 102) with Static Wrapper -->
-    <g transform="translate(572, 102)">
-      <g class="touch-pulse-1" style="transform-box: fill-box; transform-origin: center;">
-        <circle cx="0" cy="0" r="14" fill="none" stroke="#3fd0ff" stroke-width="1.5" opacity="0.6" />
-      </g>
-      <circle cx="0" cy="0" r="5" fill="#3fd0ff" />
-      <circle cx="0" cy="0" r="2" fill="#ffffff" />
-    </g>
-
-    <!-- Pinch Pointer 2 at (704, 174) with Static Wrapper -->
-    <g transform="translate(704, 174)">
-      <g class="touch-pulse-2" style="transform-box: fill-box; transform-origin: center;">
-        <circle cx="0" cy="0" r="14" fill="none" stroke="#ff6a8e" stroke-width="1.5" opacity="0.6" />
-      </g>
-      <circle cx="0" cy="0" r="5" fill="#ff6a8e" />
-      <circle cx="0" cy="0" r="2" fill="#ffffff" />
-    </g>
-
-    <!-- Pinch Gesture Connecting Dash Line -->
-    <line x1="582" y1="108" x2="694" y2="168" stroke="rgba(233, 235, 250, 0.25)" stroke-dasharray="3, 4" stroke-width="1" />
-  </g>
-
-  <!-- Bottom Section: 3 Feature Cards (descriptions in exactly two lines, >= 10px text padding) -->
-  <g id="feature-cards" class="sys-text">
-    <!-- Card 1: Pinch & Double-Tap (x: 28, width: 250) -->
-    <rect x="28" y="264" width="250" height="142" rx="12" fill="url(#card-grad)" stroke="rgba(139, 123, 255, 0.2)" stroke-width="1" />
-    <!-- Icon Circle -->
-    <rect x="44" y="280" width="34" height="34" rx="8" fill="rgba(139, 123, 255, 0.15)" stroke="rgba(139, 123, 255, 0.3)" stroke-width="1" />
-    <!-- Zoom Magnifier Icon -->
-    <path d="M 58 294 A 5 5 0 1 1 64 300 M 62 300 L 67 305" fill="none" stroke="#8b7bff" stroke-width="1.8" stroke-linecap="round" />
-    <!-- Card 1 Title -->
-    <text x="44" y="336" font-size="15" font-weight="700" fill="#e9ebfa">Pinch &amp; Double-Tap</text>
-    <!-- Card 1 Description (exactly two lines) -->
-    <text x="44" y="360" font-size="11.5" fill="#9ba1c7">
-      <tspan x="44" dy="0">Pinch &amp; pan tracking</tspan>
-      <tspan x="44" dy="17">with smooth timing reset.</tspan>
-    </text>
-
-    <!-- Card 2: Zero Reanimated (x: 295, width: 250) -->
-    <rect x="295" y="264" width="250" height="142" rx="12" fill="url(#card-grad)" stroke="rgba(63, 208, 255, 0.2)" stroke-width="1" />
-    <!-- Icon Circle -->
-    <rect x="311" y="280" width="34" height="34" rx="8" fill="rgba(63, 208, 255, 0.15)" stroke="rgba(63, 208, 255, 0.3)" stroke-width="1" />
-    <!-- Lightning / Performance Icon -->
-    <path d="M 330 287 L 323 298 L 329 298 L 326 307 L 334 296 L 328 296 Z" fill="none" stroke="#3fd0ff" stroke-width="1.6" stroke-linejoin="round" />
-    <!-- Card 2 Title -->
-    <text x="311" y="336" font-size="15" font-weight="700" fill="#e9ebfa">Zero Reanimated</text>
-    <!-- Card 2 Description (exactly two lines) -->
-    <text x="311" y="360" font-size="11.5" fill="#9ba1c7">
-      <tspan x="311" dy="0">Pure RNGH gestures and</tspan>
-      <tspan x="311" dy="17">native Animated driver.</tspan>
-    </text>
-
-    <!-- Card 3: Universal Container (x: 562, width: 250) -->
-    <rect x="562" y="264" width="250" height="142" rx="12" fill="url(#card-grad)" stroke="rgba(255, 106, 142, 0.2)" stroke-width="1" />
-    <!-- Icon Circle -->
-    <rect x="578" y="280" width="34" height="34" rx="8" fill="rgba(255, 106, 142, 0.15)" stroke="rgba(255, 106, 142, 0.3)" stroke-width="1" />
-    <!-- Box / Container Layer Icon -->
-    <rect x="586" y="289" width="18" height="16" rx="3" fill="none" stroke="#ff6a8e" stroke-width="1.6" />
-    <path d="M 590 297 L 600 297" stroke="#ff6a8e" stroke-width="1.4" stroke-linecap="round" />
-    <!-- Card 3 Title -->
-    <text x="578" y="336" font-size="15" font-weight="700" fill="#e9ebfa">Universal Container</text>
-    <!-- Card 3 Description (exactly two lines) -->
-    <text x="578" y="360" font-size="11.5" fill="#9ba1c7">
-      <tspan x="578" dy="0">Wrap any single element</tspan>
-      <tspan x="578" dy="17">with custom zoom limits.</tspan>
-    </text>
+    <!-- Phone Speaker Notch & Camera -->
+    <rect x="195" y="16" width="70" height="5" rx="2.5" fill="#1b1e42"/>
+    <circle cx="275" cy="18.5" r="3" fill="#151733"/>
   </g>
 </svg>
