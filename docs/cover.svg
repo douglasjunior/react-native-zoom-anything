@@ -134,7 +134,7 @@
       /* Phase 2: Pinch Gesture & Zoom (2s - 5.6s -> 25% - 70%) */
       @keyframes photoCycle {
         0%, 24% { transform: scale(1) translate(0, 0); }
-        38%, 62% { transform: scale(1.85) translate(-14px, 10px); }
+        38%, 62% { transform: scale(3) translate(-14px, 10px); }
         76%, 100% { transform: scale(1) translate(0, 0); }
       }
 
@@ -160,14 +160,14 @@
       }
 
       @keyframes labelMinZoom {
-        0%, 26% { opacity: 1; }
-        32%, 68% { opacity: 0; }
+        0%, 24% { opacity: 1; }
+        38%, 62% { opacity: 0; }
         76%, 100% { opacity: 1; }
       }
 
       @keyframes labelMaxZoom {
-        0%, 26% { opacity: 0; }
-        32%, 68% { opacity: 1; }
+        0%, 24% { opacity: 0; }
+        38%, 62% { opacity: 1; }
         76%, 100% { opacity: 0; }
       }
       ]]>
@@ -324,7 +324,7 @@
       <!-- Active Zoom Scale Chip (animated label toggle) -->
       <rect x="1100" y="79" width="68" height="24" rx="12" fill="rgba(63, 208, 255, 0.12)" stroke="#3fd0ff" stroke-width="1.2"/>
       <text class="anim-zoom-label-1" x="1134" y="95" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#3fd0ff" text-anchor="middle">1.0x</text>
-      <text class="anim-zoom-label-2" x="1134" y="95" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#f472b6" text-anchor="middle">2.5x</text>
+      <text class="anim-zoom-label-2" x="1134" y="95" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#f472b6" text-anchor="middle">3.0x</text>
 
       <!-- ==================== ZOOM COMPONENT CONTAINER ==================== -->
       <!-- Container Viewport Frame (Clipped at rounded rect boundaries) -->
