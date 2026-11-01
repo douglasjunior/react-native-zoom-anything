@@ -1,0 +1,282 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 440" width="100%" height="440" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="cosmic-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#04050d" />
+      <stop offset="50%" stop-color="#070918" />
+      <stop offset="100%" stop-color="#0a0c1d" />
+    </linearGradient>
+
+    <!-- Radial Nebula Glows -->
+    <radialGradient id="glow-violet" cx="20%" cy="25%" r="45%">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#8b7bff" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glow-cyan" cx="80%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#3fd0ff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#3fd0ff" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glow-pink" cx="45%" cy="80%" r="45%">
+      <stop offset="0%" stop-color="#ff6a8e" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#ff6a8e" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Core Focal Gradient -->
+    <linearGradient id="core-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b7bff" />
+      <stop offset="50%" stop-color="#3fd0ff" />
+      <stop offset="100%" stop-color="#ff6a8e" />
+    </linearGradient>
+
+    <!-- Card Background Gradient -->
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e122b" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#070918" stop-opacity="0.9" />
+    </linearGradient>
+
+    <style>
+      .sys-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      }
+
+      /* Twinkle opacity only */
+      @keyframes twinkle-a {
+        0%, 100% { opacity: 0.25; }
+        50% { opacity: 0.95; }
+      }
+      @keyframes twinkle-b {
+        0%, 100% { opacity: 0.85; }
+        50% { opacity: 0.2; }
+      }
+      @keyframes twinkle-c {
+        0%, 100% { opacity: 0.35; }
+        50% { opacity: 1; }
+      }
+
+      .star-a { animation: twinkle-a 3.2s ease-in-out infinite; }
+      .star-b { animation: twinkle-b 4.1s ease-in-out infinite; }
+      .star-c { animation: twinkle-c 2.8s ease-in-out infinite; }
+
+      /* Orbit animation around center (0,0) of static wrapper */
+      @keyframes orbit-rot {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      .orbit-group {
+        transform-box: fill-box;
+        transform-origin: 0 0;
+        animation: orbit-rot 14s linear infinite;
+      }
+
+      /* Pulse touch animation inside localized bounds with static wrapper */
+      @keyframes touch-pulse-anim {
+        0%, 100% { transform: scale(0.85); opacity: 0.35; }
+        50% { transform: scale(1.25); opacity: 0.85; }
+      }
+
+      .touch-pulse-1 {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: touch-pulse-anim 2.6s ease-in-out infinite;
+      }
+      .touch-pulse-2 {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: touch-pulse-anim 2.6s ease-in-out infinite 1.3s;
+      }
+
+      /* Reticle bracket pulse */
+      @keyframes reticle-pulse {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 0.95; }
+      }
+      .reticle-group {
+        animation: reticle-pulse 3s ease-in-out infinite;
+      }
+
+      /* Reduced motion accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        .star-a, .star-b, .star-c,
+        .orbit-group,
+        .touch-pulse-1, .touch-pulse-2,
+        .reticle-group {
+          animation: none !important;
+        }
+      }
+    </style>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="840" height="440" rx="16" fill="url(#cosmic-bg)" />
+  <rect width="840" height="440" rx="16" fill="url(#glow-violet)" />
+  <rect width="840" height="440" rx="16" fill="url(#glow-cyan)" />
+  <rect width="840" height="440" rx="16" fill="url(#glow-pink)" />
+  <rect x="0.5" y="0.5" width="839" height="439" rx="16" fill="none" stroke="rgba(139, 123, 255, 0.25)" stroke-width="1" />
+
+  <!-- Cosmic Starfield (twinkle opacity only) -->
+  <g id="stars">
+    <circle cx="65" cy="85" r="1.2" fill="#e9ebfa" class="star-a" />
+    <circle cx="120" cy="180" r="1" fill="#e9ebfa" class="star-b" />
+    <circle cx="210" cy="45" r="1.4" fill="#ffd56a" class="star-c" />
+    <circle cx="280" cy="115" r="1.1" fill="#e9ebfa" class="star-a" />
+    <circle cx="360" cy="65" r="1.3" fill="#3fd0ff" class="star-b" />
+    <circle cx="430" cy="190" r="1.5" fill="#e9ebfa" class="star-c" />
+    <circle cx="475" cy="35" r="1" fill="#e9ebfa" class="star-a" />
+    <circle cx="510" cy="245" r="1.3" fill="#ff6a8e" class="star-b" />
+    <circle cx="600" cy="18" r="1.2" fill="#e9ebfa" class="star-a" />
+    <circle cx="730" cy="25" r="1.4" fill="#ffd56a" class="star-c" />
+    <circle cx="805" cy="80" r="1.1" fill="#e9ebfa" class="star-b" />
+    <circle cx="815" cy="215" r="1.3" fill="#3fd0ff" class="star-a" />
+    <circle cx="770" cy="250" r="1" fill="#e9ebfa" class="star-c" />
+    <circle cx="50" cy="240" r="1.2" fill="#e9ebfa" class="star-b" />
+    <circle cx="160" cy="255" r="1.4" fill="#8b7bff" class="star-a" />
+  </g>
+
+  <!-- Left Header Section -->
+  <g id="header-text" class="sys-text">
+    <!-- Category Pill (padding: 236px width for 178px text => >28px padding each side) -->
+    <rect x="36" y="36" width="236" height="26" rx="13" fill="rgba(139, 123, 255, 0.12)" stroke="rgba(139, 123, 255, 0.35)" stroke-width="1" />
+    <circle cx="50" cy="49" r="4" fill="#8b7bff" />
+    <text x="62" y="53" font-size="11" font-weight="600" fill="#8b7bff" letter-spacing="1">REACT NATIVE GESTURE ZOOM</text>
+
+    <!-- Main Title -->
+    <text x="36" y="100" font-size="33" font-weight="800" fill="#e9ebfa" letter-spacing="-0.5">
+      react-native-zoom-anything
+    </text>
+
+    <!-- Tagline -->
+    <text x="36" y="130" font-size="14" font-weight="400" fill="#9ba1c7">
+      Smooth pinch-to-zoom, pan inertia, and double-tap zoom for any view.
+    </text>
+
+    <!-- Feature Badges Bar (all with >= 10px text padding) -->
+    <!-- Badge 1: Zero Reanimated (width 140px, text ~107px => 16.5px padding) -->
+    <rect x="36" y="152" width="140" height="26" rx="13" fill="rgba(63, 208, 255, 0.1)" stroke="rgba(63, 208, 255, 0.3)" stroke-width="1" />
+    <text x="106" y="169" font-size="11" font-weight="700" fill="#3fd0ff" text-anchor="middle">Zero Reanimated</text>
+
+    <!-- Badge 2: RNGH + Animated (width 140px, text ~107px => 16.5px padding) -->
+    <rect x="184" y="152" width="140" height="26" rx="13" fill="rgba(255, 106, 142, 0.1)" stroke="rgba(255, 106, 142, 0.3)" stroke-width="1" />
+    <text x="254" y="169" font-size="11" font-weight="700" fill="#ff6a8e" text-anchor="middle">RNGH + Animated</text>
+
+    <!-- Badge 3: TypeScript 5 (width 116px, text ~86px => 15px padding) -->
+    <rect x="332" y="152" width="116" height="26" rx="13" fill="rgba(255, 213, 106, 0.1)" stroke="rgba(255, 213, 106, 0.3)" stroke-width="1" />
+    <text x="390" y="169" font-size="11" font-weight="700" fill="#ffd56a" text-anchor="middle">TypeScript 5</text>
+  </g>
+
+  <!-- Right Side: Zoom Interactive Cosmic Viewport -->
+  <g id="viewport-container" class="sys-text">
+    <!-- Outer Viewport Frame -->
+    <rect x="472" y="32" width="332" height="206" rx="14" fill="rgba(7, 9, 24, 0.75)" stroke="rgba(139, 123, 255, 0.3)" stroke-width="1.5" />
+
+    <!-- Grid lines inside viewport -->
+    <path d="M 472 84 L 804 84 M 472 136 L 804 136 M 472 188 L 804 188 M 555 32 L 555 238 M 638 32 L 638 238 M 721 32 L 721 238" stroke="rgba(155, 161, 199, 0.06)" stroke-width="1" />
+
+    <!-- Viewport Header Bar -->
+    <rect x="472" y="32" width="332" height="28" rx="14" fill="rgba(14, 18, 43, 0.85)" />
+    <!-- Window controls -->
+    <circle cx="490" cy="46" r="4" fill="#ff6a8e" />
+    <circle cx="504" cy="46" r="4" fill="#ffd56a" />
+    <circle cx="518" cy="46" r="4" fill="#3fd0ff" />
+    <!-- Viewport title -->
+    <text x="532" y="50" font-size="11" font-weight="600" fill="#9ba1c7">Container Viewport</text>
+    <!-- Zoom Scale Badge (width 54, text 2.5x => >14px padding) -->
+    <rect x="738" y="38" width="54" height="16" rx="8" fill="rgba(63, 208, 255, 0.15)" stroke="rgba(63, 208, 255, 0.4)" stroke-width="0.8" />
+    <text x="765" y="50" font-size="10" font-weight="700" fill="#3fd0ff" text-anchor="middle">2.5x</text>
+
+    <!-- Center Cosmic Focal Core at (638, 138) -->
+    <circle cx="638" cy="138" r="26" fill="url(#core-grad)" opacity="0.85" />
+    <circle cx="638" cy="138" r="20" fill="#070918" />
+    <circle cx="638" cy="138" r="8" fill="url(#core-grad)" />
+
+    <!-- Orbital Ring around Center Core -->
+    <circle cx="638" cy="138" r="62" fill="none" stroke="rgba(139, 123, 255, 0.25)" stroke-dasharray="4, 6" stroke-width="1.2" />
+
+    <!-- Static Transform Wrapper around Orbit Particle (Correct Orbit Origin at 638, 138) -->
+    <g transform="translate(638, 138)">
+      <g class="orbit-group" style="transform-box: fill-box; transform-origin: 0 0;">
+        <circle cx="62" cy="0" r="4.5" fill="#ffd56a" />
+        <circle cx="62" cy="0" r="2" fill="#ffffff" />
+      </g>
+    </g>
+
+    <!-- Autofocus Reticle Brackets around (638, 138) -->
+    <g class="reticle-group" stroke="#3fd0ff" stroke-width="1.5" fill="none">
+      <!-- Top-Left -->
+      <path d="M 598 110 L 598 98 L 610 98" />
+      <!-- Top-Right -->
+      <path d="M 666 98 L 678 98 L 678 110" />
+      <!-- Bottom-Left -->
+      <path d="M 598 166 L 598 178 L 610 178" />
+      <!-- Bottom-Right -->
+      <path d="M 666 178 L 678 178 L 678 166" />
+    </g>
+
+    <!-- Pinch Pointer 1 at (572, 102) with Static Wrapper -->
+    <g transform="translate(572, 102)">
+      <g class="touch-pulse-1" style="transform-box: fill-box; transform-origin: center;">
+        <circle cx="0" cy="0" r="14" fill="none" stroke="#3fd0ff" stroke-width="1.5" opacity="0.6" />
+      </g>
+      <circle cx="0" cy="0" r="5" fill="#3fd0ff" />
+      <circle cx="0" cy="0" r="2" fill="#ffffff" />
+    </g>
+
+    <!-- Pinch Pointer 2 at (704, 174) with Static Wrapper -->
+    <g transform="translate(704, 174)">
+      <g class="touch-pulse-2" style="transform-box: fill-box; transform-origin: center;">
+        <circle cx="0" cy="0" r="14" fill="none" stroke="#ff6a8e" stroke-width="1.5" opacity="0.6" />
+      </g>
+      <circle cx="0" cy="0" r="5" fill="#ff6a8e" />
+      <circle cx="0" cy="0" r="2" fill="#ffffff" />
+    </g>
+
+    <!-- Pinch Gesture Connecting Dash Line -->
+    <line x1="582" y1="108" x2="694" y2="168" stroke="rgba(233, 235, 250, 0.25)" stroke-dasharray="3, 4" stroke-width="1" />
+  </g>
+
+  <!-- Bottom Section: 3 Feature Cards (descriptions in exactly two lines, >= 10px text padding) -->
+  <g id="feature-cards" class="sys-text">
+    <!-- Card 1: Pinch & Double-Tap (x: 28, width: 250) -->
+    <rect x="28" y="264" width="250" height="142" rx="12" fill="url(#card-grad)" stroke="rgba(139, 123, 255, 0.2)" stroke-width="1" />
+    <!-- Icon Circle -->
+    <rect x="44" y="280" width="34" height="34" rx="8" fill="rgba(139, 123, 255, 0.15)" stroke="rgba(139, 123, 255, 0.3)" stroke-width="1" />
+    <!-- Zoom Magnifier Icon -->
+    <path d="M 58 294 A 5 5 0 1 1 64 300 M 62 300 L 67 305" fill="none" stroke="#8b7bff" stroke-width="1.8" stroke-linecap="round" />
+    <!-- Card 1 Title -->
+    <text x="44" y="336" font-size="15" font-weight="700" fill="#e9ebfa">Pinch &amp; Double-Tap</text>
+    <!-- Card 1 Description (exactly two lines) -->
+    <text x="44" y="360" font-size="11.5" fill="#9ba1c7">
+      <tspan x="44" dy="0">Pinch &amp; pan tracking</tspan>
+      <tspan x="44" dy="17">with fluid spring reset.</tspan>
+    </text>
+
+    <!-- Card 2: Zero Reanimated (x: 295, width: 250) -->
+    <rect x="295" y="264" width="250" height="142" rx="12" fill="url(#card-grad)" stroke="rgba(63, 208, 255, 0.2)" stroke-width="1" />
+    <!-- Icon Circle -->
+    <rect x="311" y="280" width="34" height="34" rx="8" fill="rgba(63, 208, 255, 0.15)" stroke="rgba(63, 208, 255, 0.3)" stroke-width="1" />
+    <!-- Lightning / Performance Icon -->
+    <path d="M 330 287 L 323 298 L 329 298 L 326 307 L 334 296 L 328 296 Z" fill="none" stroke="#3fd0ff" stroke-width="1.6" stroke-linejoin="round" />
+    <!-- Card 2 Title -->
+    <text x="311" y="336" font-size="15" font-weight="700" fill="#e9ebfa">Zero Reanimated</text>
+    <!-- Card 2 Description (exactly two lines) -->
+    <text x="311" y="360" font-size="11.5" fill="#9ba1c7">
+      <tspan x="311" dy="0">Pure RNGH gestures and</tspan>
+      <tspan x="311" dy="17">native Animated driver.</tspan>
+    </text>
+
+    <!-- Card 3: Universal Container (x: 562, width: 250) -->
+    <rect x="562" y="264" width="250" height="142" rx="12" fill="url(#card-grad)" stroke="rgba(255, 106, 142, 0.2)" stroke-width="1" />
+    <!-- Icon Circle -->
+    <rect x="578" y="280" width="34" height="34" rx="8" fill="rgba(255, 106, 142, 0.15)" stroke="rgba(255, 106, 142, 0.3)" stroke-width="1" />
+    <!-- Box / Container Layer Icon -->
+    <rect x="586" y="289" width="18" height="16" rx="3" fill="none" stroke="#ff6a8e" stroke-width="1.6" />
+    <path d="M 590 297 L 600 297" stroke="#ff6a8e" stroke-width="1.4" stroke-linecap="round" />
+    <!-- Card 3 Title -->
+    <text x="578" y="336" font-size="15" font-weight="700" fill="#e9ebfa">Universal Container</text>
+    <!-- Card 3 Description (exactly two lines) -->
+    <text x="578" y="360" font-size="11.5" fill="#9ba1c7">
+      <tspan x="578" dy="0">Wrap any single element</tspan>
+      <tspan x="578" dy="17">with custom zoom limits.</tspan>
+    </text>
+  </g>
+</svg>

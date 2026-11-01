@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 140" width="100%" height="140" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="p-cosmic-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#04050d" />
+      <stop offset="50%" stop-color="#070918" />
+      <stop offset="100%" stop-color="#0a0c1d" />
+    </linearGradient>
+
+    <!-- Radial Glows -->
+    <radialGradient id="p-glow-violet" cx="15%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#8b7bff" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="p-glow-cyan" cx="85%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#3fd0ff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#3fd0ff" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Avatar Gradient -->
+    <linearGradient id="p-avatar-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b7bff" />
+      <stop offset="100%" stop-color="#3fd0ff" />
+    </linearGradient>
+
+    <!-- CTA Button Gradient -->
+    <linearGradient id="p-cta-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(139, 123, 255, 0.25)" />
+      <stop offset="100%" stop-color="rgba(63, 208, 255, 0.2)" />
+    </linearGradient>
+
+    <style>
+      .sys-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      }
+
+      /* Twinkle opacity only */
+      @keyframes p-twinkle-1 {
+        0%, 100% { opacity: 0.25; }
+        50% { opacity: 0.9; }
+      }
+      @keyframes p-twinkle-2 {
+        0%, 100% { opacity: 0.85; }
+        50% { opacity: 0.2; }
+      }
+
+      .p-star-1 { animation: p-twinkle-1 3s ease-in-out infinite; }
+      .p-star-2 { animation: p-twinkle-2 4.2s ease-in-out infinite; }
+
+      /* Correct Orbit origin with static wrapper */
+      @keyframes p-orbit-rot {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      .p-orbit {
+        transform-box: fill-box;
+        transform-origin: 0 0;
+        animation: p-orbit-rot 10s linear infinite;
+      }
+
+      /* Subtle CTA pulse inside static wrapper */
+      @keyframes p-pulse-cta {
+        0%, 100% { transform: scale(0.98); opacity: 0.3; }
+        50% { transform: scale(1.03); opacity: 0.7; }
+      }
+
+      .p-cta-anim {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: p-pulse-cta 3s ease-in-out infinite;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .p-star-1, .p-star-2, .p-orbit, .p-cta-anim {
+          animation: none !important;
+        }
+      }
+    </style>
+  </defs>
+
+  <!-- Banner Background -->
+  <rect width="840" height="140" rx="14" fill="url(#p-cosmic-bg)" />
+  <rect width="840" height="140" rx="14" fill="url(#p-glow-violet)" />
+  <rect width="840" height="140" rx="14" fill="url(#p-glow-cyan)" />
+  <rect x="0.5" y="0.5" width="839" height="139" rx="14" fill="none" stroke="rgba(139, 123, 255, 0.25)" stroke-width="1" />
+
+  <!-- Stars (twinkle opacity only) -->
+  <g id="p-stars">
+    <circle cx="50" cy="25" r="1.1" fill="#e9ebfa" class="p-star-1" />
+    <circle cx="160" cy="18" r="1.3" fill="#ffd56a" class="p-star-2" />
+    <circle cx="290" cy="32" r="1" fill="#e9ebfa" class="p-star-1" />
+    <circle cx="480" cy="20" r="1.2" fill="#3fd0ff" class="p-star-2" />
+    <circle cx="610" cy="30" r="1.4" fill="#ffd56a" class="p-star-1" />
+    <circle cx="810" cy="25" r="1.1" fill="#e9ebfa" class="p-star-2" />
+    <circle cx="580" cy="115" r="1" fill="#e9ebfa" class="p-star-1" />
+    <circle cx="795" cy="118" r="1.3" fill="#ff6a8e" class="p-star-2" />
+    <circle cx="85" cy="120" r="1" fill="#e9ebfa" class="p-star-1" />
+  </g>
+
+  <!-- Creator Monogram / Avatar at (68, 70) -->
+  <g id="p-avatar">
+    <!-- Orbital path around center (68, 70) -->
+    <circle cx="68" cy="70" r="36" fill="none" stroke="rgba(139, 123, 255, 0.25)" stroke-dasharray="3, 5" stroke-width="1.2" />
+
+    <!-- Static Wrapper around Orbiting celestial particle (Origin 68, 70) -->
+    <g transform="translate(68, 70)">
+      <g class="p-orbit" style="transform-box: fill-box; transform-origin: 0 0;">
+        <circle cx="36" cy="0" r="3.5" fill="#ffd56a" />
+        <circle cx="36" cy="0" r="1.5" fill="#ffffff" />
+      </g>
+    </g>
+
+    <!-- Center Avatar Circle -->
+    <circle cx="68" cy="70" r="26" fill="url(#p-avatar-grad)" />
+    <circle cx="68" cy="70" r="23" fill="#070918" />
+    <text x="68" y="77" font-size="16" font-weight="800" fill="#e9ebfa" text-anchor="middle" class="sys-text">DJ</text>
+  </g>
+
+  <!-- Middle Creator Information -->
+  <g id="p-info" class="sys-text">
+    <!-- Tag Pill (padding: 144px width for 111px text => ~16.5px padding each side) -->
+    <rect x="124" y="22" width="144" height="20" rx="10" fill="rgba(139, 123, 255, 0.12)" stroke="rgba(139, 123, 255, 0.3)" stroke-width="1" />
+    <text x="196" y="36" font-size="9.5" font-weight="700" fill="#8b7bff" text-anchor="middle" letter-spacing="0.8">OPEN SOURCE AUTHOR</text>
+
+    <!-- Name -->
+    <text x="124" y="65" font-size="20" font-weight="800" fill="#e9ebfa" letter-spacing="-0.3">Douglas Junior</text>
+
+    <!-- Card description formatted in exactly two lines (wide fallback safe padding > 100px before CTA button) -->
+    <text x="124" y="85" font-size="11.5" fill="#9ba1c7">
+      <tspan x="124" dy="0">Full Stack &amp; Mobile Engineer crafting lightweight,</tspan>
+      <tspan x="124" dy="17">modular libraries and polished developer tools.</tspan>
+    </text>
+  </g>
+
+  <!-- Right Side Call To Action (Button width: 196px, text ~149px => 23.5px padding each side) -->
+  <g id="p-cta" class="sys-text">
+    <!-- Static wrapper around CTA pulse effect -->
+    <g transform="translate(702, 70)">
+      <g class="p-cta-anim" style="transform-box: fill-box; transform-origin: center;">
+        <rect x="-98" y="-22" width="196" height="44" rx="22" fill="none" stroke="#3fd0ff" stroke-width="1.2" opacity="0.5" />
+      </g>
+    </g>
+
+    <!-- Main Button Body -->
+    <rect x="604" y="48" width="196" height="44" rx="22" fill="url(#p-cta-grad)" stroke="rgba(139, 123, 255, 0.6)" stroke-width="1.5" />
+    <text x="702" y="75" font-size="11.5" font-weight="700" fill="#e9ebfa" text-anchor="middle">
+      douglasjunior.work <tspan fill="#3fd0ff">↗</tspan>
+    </text>
+  </g>
+</svg>
