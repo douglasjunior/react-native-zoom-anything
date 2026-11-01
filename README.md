@@ -54,7 +54,7 @@ bun add react-native-zoom-anything react-native-gesture-handler
 ## 💡 Why react-native-zoom-anything?
 
 - 🔍 **Pinch-to-Zoom**: Fluid multi-touch scaling between customizable `minZoom` and `maxZoom` thresholds.
-- 👆 **Double-Tap Cycle**: Instant animated toggle between 1x, midpoint (`(minZoom + maxZoom) / 2`), and maximum zoom around the tapped focal point.
+- 👆 **Double-Tap Cycle**: Instant animated toggle between `minZoom` → midpoint (`(minZoom + maxZoom) / 2`) → `maxZoom` → `minZoom` around the tapped focal point.
 - ✋ **Clamped Pan with Momentum**: Pan smoothly around zoomed content with strict container boundary clamping and cubic inertia projection.
 - 🪶 **Zero Reanimated Dependency**: Built strictly on React Native's core `Animated` API using `useNativeDriver: true`. No extra native bridges or TurboModule setup required.
 - 🧵 **Flexible Threading**: Defaults to `runOnJS={true}` for zero-setup execution, with optional native thread support when Reanimated is present.
@@ -119,13 +119,13 @@ export default function Example() {
 
 ---
 
-## ⚙️ Props
+## ⚙ Props
 
 The `<Zoom>` component accepts the following props:
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `children` | `React.ReactElement<{ onLayout: ViewProps['onLayout'] }>` | *required* | A single React element that accepts `onLayout` (e.g. `<Image />` or `<View />`). For multiple elements, wrap them in a single `<View>`. |
+| `children` | `React.ReactElement<{ onLayout: ViewProps['onLayout'] }>` | `undefined` | A single React element that accepts `onLayout` (e.g. `<Image />` or `<View />`). For multiple elements, wrap them in a single `<View>`. |
 | `minZoom` | `number` | `1` | Minimum zoom scale threshold. |
 | `maxZoom` | `number` | `5` | Maximum zoom scale threshold. |
 | `style` | `ViewProps['style']` | `undefined` | Optional styles applied to the outer container `<View>`. |
@@ -135,7 +135,7 @@ The `<Zoom>` component accepts the following props:
 
 ## 🤝 Contributing
 
-Contributions are warmly welcomed!
+Contributions are warmly welcomed! For questions, bug reports, or feature suggestions, feel free to open an [issue](https://github.com/douglasjunior/react-native-zoom-anything/issues).
 
 1. Fork the repository and create your topic branch (`git checkout -b feat/my-improvement`).
 2. Verify that TypeScript type checks pass (`yarn build`).

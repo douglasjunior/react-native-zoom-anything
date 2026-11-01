@@ -64,8 +64,6 @@
       }
 
       .orbit-group {
-        transform-box: fill-box;
-        transform-origin: 0 0;
         animation: orbit-rot 14s linear infinite;
       }
 
@@ -135,19 +133,19 @@
 
   <!-- Left Header Section -->
   <g id="header-text" class="sys-text">
-    <!-- Category Pill (padding: 236px width for 178px text => >28px padding each side) -->
-    <rect x="36" y="36" width="236" height="26" rx="13" fill="rgba(139, 123, 255, 0.12)" stroke="rgba(139, 123, 255, 0.35)" stroke-width="1" />
+    <!-- Category Pill (width: 256px, accounts for letter-spacing) -->
+    <rect x="36" y="36" width="256" height="26" rx="13" fill="rgba(139, 123, 255, 0.12)" stroke="rgba(139, 123, 255, 0.35)" stroke-width="1" />
     <circle cx="50" cy="49" r="4" fill="#8b7bff" />
     <text x="62" y="53" font-size="11" font-weight="600" fill="#8b7bff" letter-spacing="1">REACT NATIVE GESTURE ZOOM</text>
 
     <!-- Main Title -->
-    <text x="36" y="100" font-size="33" font-weight="800" fill="#e9ebfa" letter-spacing="-0.5">
+    <text x="36" y="100" font-size="28" font-weight="800" fill="#e9ebfa" letter-spacing="-0.5" textLength="420" lengthAdjust="spacingAndGlyphs">
       react-native-zoom-anything
     </text>
 
     <!-- Tagline -->
-    <text x="36" y="130" font-size="14" font-weight="400" fill="#9ba1c7">
-      Smooth pinch-to-zoom, pan inertia, and double-tap zoom for any view.
+    <text x="36" y="130" font-size="13" font-weight="400" fill="#9ba1c7" textLength="420" lengthAdjust="spacingAndGlyphs">
+      Smooth pinch-to-zoom, pan inertia, and double-tap zoom.
     </text>
 
     <!-- Feature Badges Bar (all with >= 10px text padding) -->
@@ -190,13 +188,13 @@
     <circle cx="638" cy="138" r="8" fill="url(#core-grad)" />
 
     <!-- Orbital Ring around Center Core -->
-    <circle cx="638" cy="138" r="62" fill="none" stroke="rgba(139, 123, 255, 0.25)" stroke-dasharray="4, 6" stroke-width="1.2" />
+    <circle cx="638" cy="138" r="50" fill="none" stroke="rgba(139, 123, 255, 0.25)" stroke-dasharray="4, 6" stroke-width="1.2" />
 
     <!-- Static Transform Wrapper around Orbit Particle (Correct Orbit Origin at 638, 138) -->
     <g transform="translate(638, 138)">
-      <g class="orbit-group" style="transform-box: fill-box; transform-origin: 0 0;">
-        <circle cx="62" cy="0" r="4.5" fill="#ffd56a" />
-        <circle cx="62" cy="0" r="2" fill="#ffffff" />
+      <g class="orbit-group">
+        <circle cx="50" cy="0" r="4.5" fill="#ffd56a" />
+        <circle cx="50" cy="0" r="2" fill="#ffffff" />
       </g>
     </g>
 
@@ -247,7 +245,7 @@
     <!-- Card 1 Description (exactly two lines) -->
     <text x="44" y="360" font-size="11.5" fill="#9ba1c7">
       <tspan x="44" dy="0">Pinch &amp; pan tracking</tspan>
-      <tspan x="44" dy="17">with fluid spring reset.</tspan>
+      <tspan x="44" dy="17">with smooth timing reset.</tspan>
     </text>
 
     <!-- Card 2: Zero Reanimated (x: 295, width: 250) -->

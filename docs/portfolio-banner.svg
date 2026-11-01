@@ -54,8 +54,6 @@
       }
 
       .p-orbit {
-        transform-box: fill-box;
-        transform-origin: 0 0;
         animation: p-orbit-rot 10s linear infinite;
       }
 
@@ -105,7 +103,7 @@
 
     <!-- Static Wrapper around Orbiting celestial particle (Origin 68, 70) -->
     <g transform="translate(68, 70)">
-      <g class="p-orbit" style="transform-box: fill-box; transform-origin: 0 0;">
+      <g class="p-orbit">
         <circle cx="36" cy="0" r="3.5" fill="#ffd56a" />
         <circle cx="36" cy="0" r="1.5" fill="#ffffff" />
       </g>
@@ -119,9 +117,9 @@
 
   <!-- Middle Creator Information -->
   <g id="p-info" class="sys-text">
-    <!-- Tag Pill (padding: 144px width for 111px text => ~16.5px padding each side) -->
-    <rect x="124" y="22" width="144" height="20" rx="10" fill="rgba(139, 123, 255, 0.12)" stroke="rgba(139, 123, 255, 0.3)" stroke-width="1" />
-    <text x="196" y="36" font-size="9.5" font-weight="700" fill="#8b7bff" text-anchor="middle" letter-spacing="0.8">OPEN SOURCE AUTHOR</text>
+    <!-- Tag Pill (width: 164px, centered at x: 206) -->
+    <rect x="124" y="22" width="164" height="20" rx="10" fill="rgba(139, 123, 255, 0.12)" stroke="rgba(139, 123, 255, 0.3)" stroke-width="1" />
+    <text x="206" y="36" font-size="9.5" font-weight="700" fill="#8b7bff" text-anchor="middle" letter-spacing="0.8">OPEN SOURCE AUTHOR</text>
 
     <!-- Name -->
     <text x="124" y="65" font-size="20" font-weight="800" fill="#e9ebfa" letter-spacing="-0.3">Douglas Junior</text>
